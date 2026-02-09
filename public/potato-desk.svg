@@ -1,0 +1,10 @@
+<svg width="480" height="360" viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="360" rx="36" fill="#FFF7ED"/>
+  <rect x="70" y="210" width="340" height="80" rx="20" fill="#EBD6BF"/>
+  <rect x="120" y="120" width="200" height="90" rx="12" fill="#1F130A"/>
+  <rect x="130" y="130" width="180" height="60" rx="10" fill="#7BB8D6"/>
+  <rect x="200" y="210" width="40" height="30" rx="8" fill="#1F130A"/>
+  <ellipse cx="340" cy="240" rx="60" ry="45" fill="#D8B079"/>
+  <path d="M315 238C330 228 350 228 365 238" stroke="#4D3625" stroke-width="3" stroke-linecap="round"/>
+  <text x="80" y="90" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#5A4637">Study table flex</text>
+</svg>

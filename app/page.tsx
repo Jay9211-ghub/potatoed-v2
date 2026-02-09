@@ -1,4 +1,52 @@
+"use client";
+
+import Image from "next/image";
+import { useMemo, useState, type ChangeEvent, type FormEvent } from "react";
+
+const WHATSAPP_NUMBER = "919003878238";
+
 export default function Home() {
+  const [formData, setFormData] = useState({
+    senderName: "",
+    senderPhone: "",
+    recipientName: "",
+    recipientCity: "",
+    message: "",
+    deliveryDate: "",
+    product: "The Polite Spud",
+  });
+
+  const whatsappMessage = useMemo(() => {
+    const lines = [
+      "Hey Potatotes team! I want to place an order 🥔",
+      `Product: ${formData.product || ""}`,
+      `Sender name: ${formData.senderName || ""}`,
+      `Sender phone: ${formData.senderPhone || ""}`,
+      `Recipient name: ${formData.recipientName || ""}`,
+      `Recipient city: ${formData.recipientCity || ""}`,
+      `Delivery date: ${formData.deliveryDate || ""}`,
+      `Message to write: ${formData.message || ""}`,
+      "Payment: Please share UPI / payment link.",
+    ];
+    return lines.join("\n");
+  }, [formData]);
+
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
+
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="min-h-screen text-[#1f130a]">
       <div className="relative overflow-hidden">
@@ -23,46 +71,58 @@ export default function Home() {
             <a className="text-[#5a4637] hover:text-[#1f130a]" href="#menu">
               Choose a spud
             </a>
+            <a className="text-[#5a4637] hover:text-[#1f130a]" href="#order">
+              Order on WhatsApp
+            </a>
             <a className="text-[#5a4637] hover:text-[#1f130a]" href="#faq">
               FAQ
             </a>
           </nav>
-          <button className="rounded-full border border-[#1f130a] px-4 py-2 text-sm transition hover:bg-[#1f130a] hover:text-[#fff7ed]">
-            Start a Potatote
-          </button>
+          <a
+            className="rounded-full border border-[#1f130a] px-4 py-2 text-sm transition hover:bg-[#1f130a] hover:text-[#fff7ed]"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            WhatsApp order
+          </a>
         </header>
 
         <main className="mx-auto flex w-full max-w-6xl flex-col gap-24 px-6 pb-20 pt-16">
           <section className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="flex flex-col gap-6">
               <p className="inline-flex w-fit items-center gap-2 rounded-full bg-[#fff7ed] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#5a4637] shadow-sm">
-                prank mail, but make it wholesome
+                GenZ prank mail, no cringe
               </p>
               <h1 className="text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                Send a real potato with a handwritten message. It arrives as a
-                laugh, not a threat.
+                Send a real potato with your handwritten vibe. It lands as a
+                laugh, not drama.
               </h1>
               <p className="max-w-xl text-lg text-[#5a4637]">
-                Potatotes lets you write a note, we inscribe it on a potato with
-                pen, then ship it as a cheeky parcel. It is a lighthearted way
-                to say hello, celebrate, or share a harmless prank.
+                Potatotes lets you type a note, we inscribe it on a real potato,
+                then ship it as a cheeky parcel. Perfect for birthdays, dares,
+                or just chaotic bestie energy.
               </p>
               <div className="flex flex-wrap items-center gap-4">
-                <button className="rounded-full bg-[#1f130a] px-6 py-3 text-sm font-semibold text-[#fff7ed] transition hover:-translate-y-0.5 hover:bg-[#2d1e12]">
-                  Send a Potatote
-                </button>
-                <button className="rounded-full border border-[#1f130a] px-6 py-3 text-sm font-semibold text-[#1f130a] transition hover:-translate-y-0.5 hover:bg-[#fff7ed]">
-                  See how it works
-                </button>
+                <a
+                  className="rounded-full bg-[#1f130a] px-6 py-3 text-sm font-semibold text-[#fff7ed] transition hover:-translate-y-0.5 hover:bg-[#2d1e12]"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Order on WhatsApp
+                </a>
+                <a
+                  className="rounded-full border border-[#1f130a] px-6 py-3 text-sm font-semibold text-[#1f130a] transition hover:-translate-y-0.5 hover:bg-[#fff7ed]"
+                  href="#how"
+                >
+                  See the flow
+                </a>
               </div>
               <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
                 <span className="rounded-full bg-[#fff7ed] px-3 py-1">No glitter</span>
-                <span className="rounded-full bg-[#fff7ed] px-3 py-1">
-                  Real handwriting
-                </span>
-                <span className="rounded-full bg-[#fff7ed] px-3 py-1">
-                  Consent-friendly humor
-                </span>
+                <span className="rounded-full bg-[#fff7ed] px-3 py-1">Real handwriting</span>
+                <span className="rounded-full bg-[#fff7ed] px-3 py-1">No hate, only fun</span>
               </div>
             </div>
 
@@ -75,16 +135,13 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="relative mx-auto h-56 w-72">
-                  <div className="absolute inset-0 rounded-[48%] bg-gradient-to-br from-[#e4c08f] via-[#d8b079] to-[#b3844c] shadow-[0_30px_50px_rgba(31,19,10,0.25)]" />
-                  <div className="absolute left-6 top-8 h-8 w-8 rounded-full bg-[#b3844c] opacity-70" />
-                  <div className="absolute right-10 top-12 h-6 w-6 rounded-full bg-[#c19258] opacity-70" />
-                  <div className="absolute bottom-6 right-12 h-5 w-5 rounded-full bg-[#a4733f] opacity-70" />
-                  <div className="absolute left-10 top-24 rotate-[-6deg] text-sm font-semibold text-[#4d3625]">
-                    “You have been
-                    <br />
-                    officially spudded.”
-                  </div>
-                  <div className="shine" />
+                  <Image
+                    src="/potato-hero.svg"
+                    alt="Potato message preview"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
                 <div className="flex items-center justify-between rounded-2xl bg-[#fff7ed] px-4 py-3 text-sm font-medium text-[#5a4637]">
                   <span>Ships in 1-2 days</span>
@@ -92,8 +149,56 @@ export default function Home() {
                 </div>
               </div>
               <div className="absolute -bottom-10 -left-8 hidden rounded-3xl border border-dashed border-[#1f130a] bg-[#fff7ed] px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637] lg:block">
-                Actual potato. No plastic.
+                Real potato. Zero plastik vibes.
               </div>
+            </div>
+          </section>
+
+          <section className="grid gap-8 lg:grid-cols-3">
+            <div className="textured-card rounded-3xl p-6">
+              <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff7ed]">
+                <Image
+                  src="/potato-box.svg"
+                  alt="Potato gift box"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="mt-5 text-xl">Unboxing energy</h3>
+              <p className="mt-2 text-sm text-[#5a4637]">
+                A clean, cute parcel with a potato that actually feels like a
+                gift. The reveal is the joke.
+              </p>
+            </div>
+            <div className="textured-card rounded-3xl p-6">
+              <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff7ed]">
+                <Image
+                  src="/potato-desk.svg"
+                  alt="Potato on desk"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="mt-5 text-xl">Desk flex</h3>
+              <p className="mt-2 text-sm text-[#5a4637]">
+                Looks good on a study table, office desk, or hostel shelf. Easy
+                to click and share.
+              </p>
+            </div>
+            <div className="textured-card rounded-3xl p-6">
+              <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff7ed]">
+                <Image
+                  src="/potato-note.svg"
+                  alt="Handwritten note style"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="mt-5 text-xl">Handwritten vibe</h3>
+              <p className="mt-2 text-sm text-[#5a4637]">
+                We actually write it with a pen, so it feels personal and not
+                copy-paste.
+              </p>
             </div>
           </section>
 
@@ -102,10 +207,10 @@ export default function Home() {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#5a4637]">
                 How it works
               </p>
-              <h2 className="text-3xl sm:text-4xl">Three steps to spud mail</h2>
+              <h2 className="text-3xl sm:text-4xl">Three steps, full chaos</h2>
               <p className="max-w-2xl text-base text-[#5a4637]">
-                We handle the penmanship, packaging, and postal run. You just
-                bring the joke, the love note, or the surprise.
+                You drop the idea, we handle the pen, packaging, and delivery.
+                Easy, quick, and safe.
               </p>
             </div>
             <div className="grid gap-6 lg:grid-cols-3">
@@ -115,8 +220,8 @@ export default function Home() {
                 </p>
                 <h3 className="mt-4 text-2xl">Write the message</h3>
                 <p className="mt-3 text-sm text-[#5a4637]">
-                  Type up to 140 characters. We handwrite it with a bold, smudge-proof
-                  pen that reads like a postcard.
+                  Type up to 140 characters. We handwrite it with a bold marker
+                  so it reads like a tiny postcard.
                 </p>
               </div>
               <div className="textured-card rounded-3xl p-6">
@@ -125,8 +230,8 @@ export default function Home() {
                 </p>
                 <h3 className="mt-4 text-2xl">We inscribe the potato</h3>
                 <p className="mt-3 text-sm text-[#5a4637]">
-                  Each potato is cleaned, inspected, and labeled by hand so the
-                  message is legible and playful.
+                  Each potato is cleaned, inspected, and written on by hand so
+                  the message looks crisp.
                 </p>
               </div>
               <div className="textured-card rounded-3xl p-6">
@@ -135,8 +240,8 @@ export default function Home() {
                 </p>
                 <h3 className="mt-4 text-2xl">Ship it as a parcel</h3>
                 <p className="mt-3 text-sm text-[#5a4637]">
-                  We mail it with tracking. The recipient opens the box, finds a
-                  potato, and laughs.
+                  We ship it with tracking. Your friend opens the box, sees a
+                  potato, and loses it.
                 </p>
               </div>
             </div>
@@ -149,8 +254,7 @@ export default function Home() {
               </p>
               <h2 className="text-3xl sm:text-4xl">Pick the potato personality</h2>
               <p className="max-w-2xl text-base text-[#5a4637]">
-                Different sizes, different vibes. All of them real, all of them
-                ridiculously fun to receive.
+                Different sizes, different vibes. All real, all ridiculous.
               </p>
             </div>
             <div className="grid gap-6 lg:grid-cols-3">
@@ -161,12 +265,16 @@ export default function Home() {
                 </div>
                 <h3 className="mt-4 text-2xl">The Polite Spud</h3>
                 <p className="mt-3 text-sm text-[#5a4637]">
-                  Medium potato, perfect for quick hellos, congratulations, and
-                  friendly nudges.
+                  Medium potato for quick hellos, congrats, and friendly roasts.
                 </p>
-                <button className="mt-6 w-full rounded-full bg-[#1f130a] px-4 py-2 text-sm font-semibold text-[#fff7ed]">
+                <a
+                  className="mt-6 block w-full rounded-full bg-[#1f130a] px-4 py-2 text-center text-sm font-semibold text-[#fff7ed]"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Pick this one
-                </button>
+                </a>
               </div>
               <div className="textured-card rounded-3xl p-6">
                 <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
@@ -177,12 +285,17 @@ export default function Home() {
                 </div>
                 <h3 className="mt-4 text-2xl">The Loud Tater</h3>
                 <p className="mt-3 text-sm text-[#5a4637]">
-                  Oversized and attention-grabbing, for birthdays, rival sports
-                  fans, or big reveals.
+                  Oversized and extra, for birthdays, rival sports fans, or big
+                  reveals.
                 </p>
-                <button className="mt-6 w-full rounded-full bg-[#1f130a] px-4 py-2 text-sm font-semibold text-[#fff7ed]">
+                <a
+                  className="mt-6 block w-full rounded-full bg-[#1f130a] px-4 py-2 text-center text-sm font-semibold text-[#fff7ed]"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Pick this one
-                </button>
+                </a>
               </div>
               <div className="textured-card rounded-3xl p-6">
                 <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
@@ -194,9 +307,14 @@ export default function Home() {
                   Multiple potatoes, multiple notes. Great for office pranks or
                   group celebrations.
                 </p>
-                <button className="mt-6 w-full rounded-full bg-[#1f130a] px-4 py-2 text-sm font-semibold text-[#fff7ed]">
+                <a
+                  className="mt-6 block w-full rounded-full bg-[#1f130a] px-4 py-2 text-center text-sm font-semibold text-[#fff7ed]"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Pick this one
-                </button>
+                </a>
               </div>
             </div>
           </section>
@@ -208,8 +326,8 @@ export default function Home() {
               </p>
               <h2 className="text-3xl sm:text-4xl">Make the message feel human</h2>
               <p className="text-base text-[#5a4637]">
-                Choose a handwriting style and ink color. We write it by hand,
-                then let the potato dry before shipping so the note stays crisp.
+                Choose a handwriting style and ink. We write it by hand, dry it
+                out, and then ship.
               </p>
               <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
                 <span className="rounded-full bg-[#fff7ed] px-3 py-1">Bold marker</span>
@@ -230,14 +348,144 @@ export default function Home() {
                 <p className="text-2xl leading-snug">
                   “Happy promotion!
                   <br />
-                  You have officially been promoted to Potato Boss.”
+                  You are officially Potato Boss.”
                 </p>
                 <p className="mt-4 text-sm text-[#5a4637]">Signed, your favorite coworker.</p>
               </div>
-              <button className="mt-6 w-full rounded-full border border-[#1f130a] px-4 py-2 text-sm font-semibold text-[#1f130a] transition hover:bg-[#1f130a] hover:text-[#fff7ed]">
+              <a
+                className="mt-6 block w-full rounded-full border border-[#1f130a] px-4 py-2 text-center text-sm font-semibold text-[#1f130a] transition hover:bg-[#1f130a] hover:text-[#fff7ed]"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Customize handwriting
-              </button>
+              </a>
             </div>
+          </section>
+
+          <section id="order" className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="flex flex-col gap-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#5a4637]">
+                WhatsApp checkout
+              </p>
+              <h2 className="text-3xl sm:text-4xl">Fill once, pay on WhatsApp</h2>
+              <p className="text-base text-[#5a4637]">
+                Share your details and we will take the order on WhatsApp. We
+                support UPI and cards via payment links.
+              </p>
+              <p className="text-xs text-[#5a4637]">
+                Pro tip: keep it safe and non-hate. We refuse abusive content.
+              </p>
+            </div>
+
+            <form
+              onSubmit={handleSubmit}
+              className="textured-card grid gap-4 rounded-[28px] p-6"
+            >
+              <div className="grid gap-2">
+                <label className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
+                  Choose potato
+                </label>
+                <select
+                  name="product"
+                  value={formData.product}
+                  onChange={handleInputChange}
+                  className="rounded-2xl border border-[#1f130a]/10 bg-[#fff7ed] px-4 py-3 text-sm"
+                >
+                  <option>The Polite Spud</option>
+                  <option>The Loud Tater</option>
+                  <option>The Sack Attack</option>
+                </select>
+              </div>
+              <div className="grid gap-2">
+                <label className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
+                  Your name
+                </label>
+                <input
+                  name="senderName"
+                  value={formData.senderName}
+                  onChange={handleInputChange}
+                  placeholder="Aarav / Diya"
+                  className="rounded-2xl border border-[#1f130a]/10 bg-[#fff7ed] px-4 py-3 text-sm"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <label className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
+                  Your WhatsApp number
+                </label>
+                <input
+                  name="senderPhone"
+                  value={formData.senderPhone}
+                  onChange={handleInputChange}
+                  placeholder="+91 98xxxxxx"
+                  className="rounded-2xl border border-[#1f130a]/10 bg-[#fff7ed] px-4 py-3 text-sm"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <label className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
+                  Recipient name
+                </label>
+                <input
+                  name="recipientName"
+                  value={formData.recipientName}
+                  onChange={handleInputChange}
+                  placeholder="Bestie name"
+                  className="rounded-2xl border border-[#1f130a]/10 bg-[#fff7ed] px-4 py-3 text-sm"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <label className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
+                  Delivery city
+                </label>
+                <input
+                  name="recipientCity"
+                  value={formData.recipientCity}
+                  onChange={handleInputChange}
+                  placeholder="Mumbai / Delhi"
+                  className="rounded-2xl border border-[#1f130a]/10 bg-[#fff7ed] px-4 py-3 text-sm"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <label className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
+                  Delivery date
+                </label>
+                <input
+                  type="date"
+                  name="deliveryDate"
+                  value={formData.deliveryDate}
+                  onChange={handleInputChange}
+                  className="rounded-2xl border border-[#1f130a]/10 bg-[#fff7ed] px-4 py-3 text-sm"
+                />
+              </div>
+              <div className="grid gap-2">
+                <label className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5a4637]">
+                  Message to write (140 chars)
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Tera balance low hai, but vibes high."
+                  rows={3}
+                  maxLength={140}
+                  className="rounded-2xl border border-[#1f130a]/10 bg-[#fff7ed] px-4 py-3 text-sm"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="rounded-full bg-[#1f130a] px-6 py-3 text-sm font-semibold text-[#fff7ed]"
+              >
+                Continue on WhatsApp
+              </button>
+              <p className="text-xs text-[#5a4637]">
+                You will be redirected to WhatsApp with your order summary.
+              </p>
+            </form>
           </section>
 
           <section id="faq" className="grid gap-8">
@@ -251,22 +499,20 @@ export default function Home() {
               <div className="textured-card rounded-3xl p-6">
                 <h3 className="text-xl">Does it smell?</h3>
                 <p className="mt-3 text-sm text-[#5a4637]">
-                  The potato is fresh and mailed quickly. It should arrive just
-                  like a grocery potato, without any strong odor.
+                  Fresh potato + fast shipping. It arrives like a grocery potato,
+                  no weird smell.
                 </p>
               </div>
               <div className="textured-card rounded-3xl p-6">
                 <h3 className="text-xl">Can I send it anonymously?</h3>
                 <p className="mt-3 text-sm text-[#5a4637]">
-                  You can choose to omit your name, but we always keep sender
-                  details for safety and compliance.
+                  You can omit your name, but we keep sender details for safety.
                 </p>
               </div>
               <div className="textured-card rounded-3xl p-6">
                 <h3 className="text-xl">Where do you ship?</h3>
                 <p className="mt-3 text-sm text-[#5a4637]">
-                  We currently ship within the U.S. and are expanding. Tracking
-                  is included on every parcel.
+                  We ship across India right now. Tracking is included.
                 </p>
               </div>
               <div className="textured-card rounded-3xl p-6">
@@ -284,21 +530,29 @@ export default function Home() {
             <div className="relative z-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
               <div className="flex flex-col gap-4">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7d7b5]">
-                  Ready to prank nicely?
+                  Ready for a wholesome prank?
                 </p>
-                <h2 className="text-3xl sm:text-4xl">Start a Potatote today</h2>
+                <h2 className="text-3xl sm:text-4xl">Send your first Potatote</h2>
                 <p className="text-base text-[#f7d7b5]">
                   A small potato. A big grin. The easiest way to surprise
                   someone without being annoying.
                 </p>
               </div>
               <div className="flex flex-col gap-4">
-                <button className="rounded-full bg-[#fff7ed] px-6 py-3 text-sm font-semibold text-[#1f130a]">
+                <a
+                  className="rounded-full bg-[#fff7ed] px-6 py-3 text-center text-sm font-semibold text-[#1f130a]"
+                  href="#order"
+                >
                   Create your message
-                </button>
-                <button className="rounded-full border border-[#fff7ed] px-6 py-3 text-sm font-semibold text-[#fff7ed]">
-                  Talk to support
-                </button>
+                </a>
+                <a
+                  className="rounded-full border border-[#fff7ed] px-6 py-3 text-center text-sm font-semibold text-[#fff7ed]"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Talk to support on WhatsApp
+                </a>
               </div>
             </div>
           </section>
@@ -312,7 +566,7 @@ export default function Home() {
             </div>
             <div className="flex flex-wrap gap-6">
               <span>Safety-first humor</span>
-              <span>Support: hello@potatotes.com</span>
+              <span>Support: WhatsApp only</span>
               <span>© 2026 Potatotes</span>
             </div>
           </div>

@@ -1,0 +1,12 @@
+<svg width="480" height="360" viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="360" rx="36" fill="#FFF7ED"/>
+  <ellipse cx="250" cy="200" rx="150" ry="110" fill="#D8B079"/>
+  <ellipse cx="210" cy="170" rx="18" ry="14" fill="#B3844C" opacity="0.8"/>
+  <ellipse cx="310" cy="210" rx="14" ry="11" fill="#C19258" opacity="0.8"/>
+  <ellipse cx="280" cy="140" rx="10" ry="8" fill="#A4733F" opacity="0.8"/>
+  <path d="M170 205C190 190 220 188 245 196" stroke="#4D3625" stroke-width="4" stroke-linecap="round"/>
+  <path d="M185 225C210 215 255 215 285 226" stroke="#4D3625" stroke-width="4" stroke-linecap="round"/>
+  <path d="M180 248C210 238 270 238 305 248" stroke="#4D3625" stroke-width="4" stroke-linecap="round"/>
+  <text x="70" y="80" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#5A4637">Handwritten note</text>
+  <text x="70" y="106" font-family="'Space Grotesk', sans-serif" font-size="12" fill="#5A4637">You have been officially spudded.</text>
+</svg>
