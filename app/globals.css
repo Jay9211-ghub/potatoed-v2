@@ -1,17 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --sand: #f7f0e6;
-  --cream: #fff7ed;
-  --ink: #1f130a;
-  --muted: #5a4637;
-  --potato: #d8b079;
-  --potato-dark: #b3844c;
-  --leaf: #2f6b4f;
-  --sun: #ffb347;
-  --berry: #f09aa4;
-  --sky: #7bb8d6;
-  --shadow: rgba(31, 19, 10, 0.2);
+  --sand: #fff0e5;
+  --cream: #ffffff;
+  --ink: #1a1026;
+  --muted: #5c4b6b;
+  --mango: #ff9f1c;
+  --teal: #2ec4b6;
+  --pink: #ff5d8f;
+  --blue: #5fa8ff;
+  --shadow: rgba(26, 16, 38, 0.2);
 }
 
 @theme inline {
@@ -23,10 +21,11 @@
 
 body {
   background:
-    radial-gradient(circle at 10% 10%, rgba(255, 179, 71, 0.25), transparent 40%),
-    radial-gradient(circle at 90% 20%, rgba(123, 184, 214, 0.2), transparent 45%),
-    radial-gradient(circle at 30% 80%, rgba(240, 154, 164, 0.2), transparent 45%),
-    linear-gradient(180deg, var(--sand), #f2e6d6 60%, #efe1cf 100%);
+    radial-gradient(circle at 10% 10%, rgba(255, 159, 28, 0.22), transparent 42%),
+    radial-gradient(circle at 90% 15%, rgba(46, 196, 182, 0.25), transparent 45%),
+    radial-gradient(circle at 30% 80%, rgba(255, 93, 143, 0.22), transparent 45%),
+    radial-gradient(circle at 70% 70%, rgba(95, 168, 255, 0.18), transparent 50%),
+    linear-gradient(160deg, #fff5ec 0%, #ffe9f2 48%, #ecf5ff 100%);
   color: var(--ink);
   font-family: var(--font-body), "Space Grotesk", system-ui, sans-serif;
 }
@@ -41,10 +40,10 @@ h4 {
 
 .textured-card {
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.35)),
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.7), transparent 60%);
-  border: 1px solid rgba(31, 19, 10, 0.08);
-  box-shadow: 0 18px 40px rgba(31, 19, 10, 0.12);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.55)),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.9), transparent 65%);
+  border: 1px solid rgba(26, 16, 38, 0.08);
+  box-shadow: 0 18px 45px rgba(26, 16, 38, 0.18);
   backdrop-filter: blur(6px);
 }
 
@@ -68,4 +67,34 @@ h4 {
   background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.8), transparent 55%);
   opacity: 0.7;
   pointer-events: none;
+}
+
+.neo-card {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.6)),
+    radial-gradient(circle at 20% 20%, rgba(255, 159, 28, 0.25), transparent 55%);
+  border: 1px solid rgba(26, 16, 38, 0.1);
+  box-shadow: 0 25px 60px rgba(26, 16, 38, 0.2);
+}
+
+.glow {
+  box-shadow: 0 0 0 1px rgba(255, 159, 28, 0.25), 0 18px 60px rgba(95, 168, 255, 0.25);
+}
+
+.float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.float-fast {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
