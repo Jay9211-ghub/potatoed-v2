@@ -15,9 +15,9 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Potatotes | Send Potatoes as Pranks",
+  title: "Potatoed | Send Potatoes as Pranks",
   description:
-    "Potatotes lets you send handwritten messages on real potatoes, mailed as a playful prank.",
+    "Potatoed lets you send handwritten messages on real potatoes, mailed as a playful prank.",
 };
 
 export default function RootLayout({

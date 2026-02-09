@@ -13,12 +13,12 @@ export default function Home() {
     recipientCity: "",
     message: "",
     deliveryDate: "",
-    product: "The Polite Spud",
+    product: "The Polite Potato",
   });
 
   const whatsappMessage = useMemo(() => {
     const lines = [
-      "Hey Potatotes team! I want to place an order 🥔",
+      "Hey Potatoed team! I want to place an order 🥔",
       `Product: ${formData.product || ""}`,
       `Sender name: ${formData.senderName || ""}`,
       `Sender phone: ${formData.senderPhone || ""}`,
@@ -56,11 +56,16 @@ export default function Home() {
 
         <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pt-8 text-sm font-medium">
           <div className="flex items-center gap-3">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#1a1026] text-[#fff0e5]">
-              P
-            </span>
+            <div className="relative h-10 w-10 overflow-hidden rounded-full bg-[#fff0e5] shadow-[0_10px_25px_rgba(26,16,38,0.2)]">
+              <Image
+                src="/logo-potatoed.svg"
+                alt="Potatoed logo"
+                fill
+                className="object-cover"
+              />
+            </div>
             <div>
-              <p className="text-lg font-semibold tracking-tight">Potatotes</p>
+              <p className="text-lg font-semibold tracking-tight">Potatoed</p>
               <p className="text-xs text-[#5c4b6b]">Handwritten potato pranks</p>
             </div>
           </div>
@@ -69,7 +74,7 @@ export default function Home() {
               How it works
             </a>
             <a className="text-[#5c4b6b] hover:text-[#1a1026]" href="#menu">
-              Choose a spud
+              Choose a potato
             </a>
             <a className="text-[#5c4b6b] hover:text-[#1a1026]" href="#gallery">
               Gallery
@@ -102,7 +107,7 @@ export default function Home() {
                 laugh, not drama.
               </h1>
               <p className="max-w-xl text-lg text-[#5c4b6b]">
-                Potatotes lets you type a note, we inscribe it on a real potato,
+                Potatoed lets you type a note, we inscribe it on a real potato,
                 then ship it as a cheeky parcel. Perfect for birthdays, dares,
                 or just chaotic bestie energy.
               </p>
@@ -140,7 +145,7 @@ export default function Home() {
                 <div className="mx-auto grid h-56 w-72 grid-cols-2 gap-3">
                   <div className="relative overflow-hidden rounded-2xl bg-[#fff0e5] shadow-[0_16px_30px_rgba(26,16,38,0.25)]">
                     <Image
-                      src="/ai-potato-hero.svg"
+                      src="/real-potato-hero-1.svg"
                       alt="Potato message preview"
                       fill
                       className="object-cover"
@@ -149,7 +154,7 @@ export default function Home() {
                   </div>
                   <div className="relative overflow-hidden rounded-2xl bg-[#fff0e5] shadow-[0_16px_30px_rgba(26,16,38,0.25)]">
                     <Image
-                      src="/ai-potato-hero-2.svg"
+                      src="/real-potato-hero-2.svg"
                       alt="Potato parcel preview"
                       fill
                       className="object-cover"
@@ -172,7 +177,7 @@ export default function Home() {
             <div className="neo-card float-slow rounded-3xl p-6">
               <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                 <Image
-                  src="/ai-potato-unbox.svg"
+                  src="/real-potato-unbox.svg"
                   alt="Potato gift box"
                   fill
                   className="object-cover"
@@ -187,7 +192,7 @@ export default function Home() {
             <div className="neo-card float-fast rounded-3xl p-6">
               <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                 <Image
-                  src="/ai-potato-desk.svg"
+                  src="/real-potato-desk.svg"
                   alt="Potato on desk"
                   fill
                   className="object-cover"
@@ -202,7 +207,7 @@ export default function Home() {
             <div className="neo-card float-slow rounded-3xl p-6">
               <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                 <Image
-                  src="/ai-potato-note.svg"
+                  src="/real-potato-note.svg"
                   alt="Handwritten note style"
                   fill
                   className="object-cover"
@@ -219,11 +224,11 @@ export default function Home() {
           <section id="gallery" className="grid gap-8">
             <div className="flex flex-col gap-3">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#5c4b6b]">
-                Potatote gallery
+                Potatoed gallery
               </p>
               <h2 className="text-3xl sm:text-4xl">How it actually looks</h2>
               <p className="max-w-2xl text-base text-[#5c4b6b]">
-                AI-style previews to show the vibe: bold ink, cute packaging,
+                Real-feel previews to show the vibe: bold ink, cute packaging,
                 and that potato glow-up.
               </p>
             </div>
@@ -231,7 +236,7 @@ export default function Home() {
               <div className="neo-card rounded-3xl p-4">
                 <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                   <Image
-                    src="/ai-gallery-1.svg"
+                    src="/real-gallery-1.svg"
                     alt="Potato gift moment"
                     fill
                     className="object-cover"
@@ -244,7 +249,7 @@ export default function Home() {
               <div className="neo-card rounded-3xl p-4">
                 <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                   <Image
-                    src="/ai-gallery-2.svg"
+                    src="/real-gallery-2.svg"
                     alt="Potato close-up"
                     fill
                     className="object-cover"
@@ -257,7 +262,7 @@ export default function Home() {
               <div className="neo-card rounded-3xl p-4">
                 <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                   <Image
-                    src="/ai-gallery-3.svg"
+                    src="/real-gallery-3.svg"
                     alt="Potato on desk"
                     fill
                     className="object-cover"
@@ -270,7 +275,7 @@ export default function Home() {
               <div className="neo-card rounded-3xl p-4">
                 <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                   <Image
-                    src="/ai-gallery-4.svg"
+                    src="/real-gallery-4.svg"
                     alt="Potato parcel"
                     fill
                     className="object-cover"
@@ -331,7 +336,7 @@ export default function Home() {
           <section id="menu" className="grid gap-10">
             <div className="flex flex-col gap-3">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#5c4b6b]">
-                Choose a spud
+                Choose a potato
               </p>
               <h2 className="text-3xl sm:text-4xl">Pick the potato personality</h2>
               <p className="max-w-2xl text-base text-[#5c4b6b]">
@@ -344,7 +349,7 @@ export default function Home() {
                   <span>Classic</span>
                   <span className="rounded-full bg-[#fff0e5] px-3 py-1">Best seller</span>
                 </div>
-                <h3 className="mt-4 text-2xl">The Polite Spud</h3>
+                <h3 className="mt-4 text-2xl">The Polite Potato</h3>
                 <p className="mt-3 text-sm text-[#5c4b6b]">
                   Medium potato for quick hellos, congrats, and friendly roasts.
                 </p>
@@ -473,7 +478,7 @@ export default function Home() {
                   onChange={handleInputChange}
                   className="rounded-2xl border border-[#1a1026]/10 bg-[#fff0e5] px-4 py-3 text-sm"
                 >
-                  <option>The Polite Spud</option>
+                  <option>The Polite Potato</option>
                   <option>The Loud Tater</option>
                   <option>The Sack Attack</option>
                 </select>
@@ -613,7 +618,7 @@ export default function Home() {
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ffd1a6]">
                   Ready for a wholesome prank?
                 </p>
-                <h2 className="text-3xl sm:text-4xl">Send your first Potatote</h2>
+                <h2 className="text-3xl sm:text-4xl">Send your first Potatoed prank</h2>
                 <p className="text-base text-[#ffd1a6]">
                   A small potato. A big grin. The easiest way to surprise
                   someone without being annoying.
@@ -642,13 +647,13 @@ export default function Home() {
         <footer className="border-t border-[#1a1026]/10 px-6 py-10">
           <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-sm text-[#5c4b6b] lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <p className="text-base font-semibold text-[#1a1026]">Potatotes</p>
+              <p className="text-base font-semibold text-[#1a1026]">Potatoed</p>
               <p>Pranks with a pulse. Potatoes with a pen.</p>
             </div>
             <div className="flex flex-wrap gap-6">
               <span>Safety-first humor</span>
               <span>Support: WhatsApp only</span>
-              <span>© 2026 Potatotes</span>
+              <span>© 2026 Potatoed</span>
             </div>
           </div>
         </footer>
