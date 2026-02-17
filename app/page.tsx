@@ -145,7 +145,7 @@ export default function Home() {
                 <div className="mx-auto grid h-56 w-72 grid-cols-2 gap-3">
                   <div className="relative overflow-hidden rounded-2xl bg-[#fff0e5] shadow-[0_16px_30px_rgba(26,16,38,0.25)]">
                     <Image
-                      src="/real-potato-hero-1.svg"
+                      src="/real-potato-hero-1.jpg"
                       alt="Potato message preview"
                       fill
                       className="object-cover"
@@ -154,7 +154,7 @@ export default function Home() {
                   </div>
                   <div className="relative overflow-hidden rounded-2xl bg-[#fff0e5] shadow-[0_16px_30px_rgba(26,16,38,0.25)]">
                     <Image
-                      src="/real-potato-hero-2.svg"
+                      src="/real-potato-hero-2.jpg"
                       alt="Potato parcel preview"
                       fill
                       className="object-cover"
@@ -177,7 +177,7 @@ export default function Home() {
             <div className="neo-card float-slow rounded-3xl p-6">
               <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                 <Image
-                  src="/real-potato-unbox.svg"
+                  src="/real-potato-unbox.jpg"
                   alt="Potato gift box"
                   fill
                   className="object-cover"
@@ -192,7 +192,7 @@ export default function Home() {
             <div className="neo-card float-fast rounded-3xl p-6">
               <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                 <Image
-                  src="/real-potato-desk.svg"
+                  src="/real-potato-desk.jpg"
                   alt="Potato on desk"
                   fill
                   className="object-cover"
@@ -207,7 +207,7 @@ export default function Home() {
             <div className="neo-card float-slow rounded-3xl p-6">
               <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                 <Image
-                  src="/real-potato-note.svg"
+                  src="/real-potato-note.jpg"
                   alt="Handwritten note style"
                   fill
                   className="object-cover"
@@ -236,7 +236,7 @@ export default function Home() {
               <div className="neo-card rounded-3xl p-4">
                 <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                   <Image
-                    src="/real-gallery-1.svg"
+                    src="/real-gallery-1.jpg"
                     alt="Potato gift moment"
                     fill
                     className="object-cover"
@@ -249,7 +249,7 @@ export default function Home() {
               <div className="neo-card rounded-3xl p-4">
                 <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                   <Image
-                    src="/real-gallery-2.svg"
+                    src="/real-gallery-2.jpg"
                     alt="Potato close-up"
                     fill
                     className="object-cover"
@@ -262,7 +262,7 @@ export default function Home() {
               <div className="neo-card rounded-3xl p-4">
                 <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                   <Image
-                    src="/real-gallery-3.svg"
+                    src="/real-gallery-3.jpg"
                     alt="Potato on desk"
                     fill
                     className="object-cover"
@@ -275,7 +275,7 @@ export default function Home() {
               <div className="neo-card rounded-3xl p-4">
                 <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
                   <Image
-                    src="/real-gallery-4.svg"
+                    src="/real-gallery-4.jpg"
                     alt="Potato parcel"
                     fill
                     className="object-cover"
