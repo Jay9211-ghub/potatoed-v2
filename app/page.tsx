@@ -5,6 +5,31 @@ import { useMemo, useState, type ChangeEvent, type FormEvent } from "react";
 
 const WHATSAPP_NUMBER = "919003878238";
 
+const stats = [
+  { value: "12k+", label: "Potatoes delivered" },
+  { value: "4.9★", label: "Avg. WhatsApp rating" },
+  { value: "98%", label: "On-time delivery" },
+  { value: "24h", label: "Avg. turnaround" },
+];
+
+const reviews = [
+  {
+    name: "Aanya · Pune",
+    quote:
+      "Sent this to my bestie and she screamed on call. 10/10 chaos, zero cringe.",
+  },
+  {
+    name: "Ishaan · Delhi",
+    quote:
+      "The handwriting looked legit. Parcel was neat and delivery was fast.",
+  },
+  {
+    name: "Meera · Bengaluru",
+    quote:
+      "We used it for a team prank. Everyone took selfies with the potato.",
+  },
+];
+
 export default function Home() {
   const [formData, setFormData] = useState({
     senderName: "",
@@ -173,6 +198,33 @@ export default function Home() {
             </div>
           </section>
 
+          <section className="grid gap-8">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#5c4b6b]">
+                  Launch stats (sample)
+                </p>
+                <h2 className="text-3xl sm:text-4xl">Proof the chaos works</h2>
+              </div>
+              <p className="max-w-md text-sm text-[#5c4b6b]">
+                Early community numbers to set the vibe. Real deliveries, real laughs.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="neo-card rounded-3xl p-6 text-center"
+                >
+                  <p className="text-3xl font-semibold text-[#1a1026]">{stat.value}</p>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#5c4b6b]">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="grid gap-8 lg:grid-cols-3">
             <div className="neo-card float-slow rounded-3xl p-6">
               <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
@@ -247,13 +299,15 @@ export default function Home() {
                 </p>
               </div>
               <div className="neo-card rounded-3xl p-4">
-                <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5]">
-                  <Image
-                    src="/real-gallery-2.jpg"
-                    alt="Potato close-up"
-                    fill
-                    className="object-cover"
-                  />
+                <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-[#fff0e5] p-2">
+                  <div className="relative h-full w-full">
+                    <Image
+                      src="/real-gallery-2.jpg"
+                      alt="Potato close-up"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
                 <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#5c4b6b]">
                   Ink close-up
@@ -285,6 +339,32 @@ export default function Home() {
                   Parcel vibes
                 </p>
               </div>
+            </div>
+          </section>
+
+          <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="flex flex-col gap-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#5c4b6b]">
+                Sample reviews
+              </p>
+              <h2 className="text-3xl sm:text-4xl">The group chat approves</h2>
+              <p className="text-base text-[#5c4b6b]">
+                What people *say* when they get potatoed. Screenshot-worthy, every time.
+              </p>
+            </div>
+            <div className="grid gap-4">
+              {reviews.map((review, index) => (
+                <div
+                  key={review.name}
+                  className="neo-card rounded-3xl p-6"
+                  style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+                >
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5c4b6b]">
+                    {review.name}
+                  </p>
+                  <p className="mt-3 text-base text-[#1a1026]">“{review.quote}”</p>
+                </div>
+              ))}
             </div>
           </section>
 
